@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::{Result, BufRead, BufReader};
+use std::io::{BufRead, BufReader, Result};
 use std::path::Path;
 
 pub trait DayExecutable {
@@ -7,5 +7,11 @@ pub trait DayExecutable {
 }
 
 pub fn read_lines<P: AsRef<Path>>(path: P) -> Result<Vec<String>> {
-    File::open(path).map(|f| BufReader::new(f).lines().into_iter().map(|l| l.unwrap()).collect())
+    File::open(path).map(|f| {
+        BufReader::new(f)
+            .lines()
+            .into_iter()
+            .map(|l| l.unwrap())
+            .collect()
+    })
 }
