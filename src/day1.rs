@@ -8,23 +8,13 @@ impl DayExecutable for Day1Executable {
         let lines_result = read_lines("./data/day1.txt");
         match lines_result {
             Err(e) => println!("Error: {}", e),
-            Ok(lines) => self.process_part2(lines),
+            Ok(lines) => self.process(lines),
         }
     }
 }
 
 impl Day1Executable {
-    #[allow(dead_code)]
-    fn process_part1(&self, lines: Vec<String>) {
-        let result = lines
-            .iter()
-            .map(|l| l.parse::<u32>().unwrap())
-            .tuple_windows::<(_, _)>()
-            .map(|(i1, i2)| if i1 < i2 { 1 } else { 0 })
-            .fold(0, |sum, v| sum + v);
-        println!("Result: {}", result);
-    }
-    fn process_part2(&self, lines: Vec<String>) {
+    fn process(&self, lines: Vec<String>) {
         let result = lines
             .iter()
             .map(|l| l.parse::<u32>().unwrap())
