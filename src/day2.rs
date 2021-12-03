@@ -48,11 +48,10 @@ fn create_direction(value: &String) -> Result<Direction, String> {
 }
 
 fn build_direction(dir: &str, val: &str) -> Result<Direction, String> {
-    let value = val.parse::<u32>().unwrap();
-    match dir {
-        "forward" => Ok(Forward(value)),
-        "down" => Ok(Down(value)),
-        "up" => Ok(Up(value)),
-        _ => Err(format!("Unknown direction: {}", dir)),
+    match (dir, val.parse::<u32>()) {
+        ("forward", Ok(v) ) => Ok(Forward(v)),
+        ("down", Ok(v)) => Ok(Down(v)),
+        ("up", Ok(v)) => Ok(Up(v)),
+        _ => Err(format!("Illegal direction and/or value: {}, {}", dir, val)),
     }
 }
