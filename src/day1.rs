@@ -5,7 +5,7 @@ pub struct Day1Executable {}
 
 impl DayExecutable for Day1Executable {
     fn execute(&self) {
-        let lines_result = read_lines();
+        let lines_result = read_lines("./data/day1.txt");
         match lines_result {
             Err(e) => println!("Error: {}", e),
             Ok(lines) => self.process(lines)
