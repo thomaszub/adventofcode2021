@@ -2,11 +2,13 @@ mod base;
 mod day1;
 mod day2;
 mod day3;
+mod day4;
 
 use crate::base::DayExecutable;
 use crate::day1::Day1Executable;
 use crate::day2::Day2Executable;
 use crate::day3::Day3Executable;
+use crate::day4::Day4Executable;
 use std::env;
 use std::time::Instant;
 
@@ -19,6 +21,7 @@ fn main() {
             "day1" => Some(Box::new(Day1Executable {})),
             "day2" => Some(Box::new(Day2Executable {})),
             "day3" => Some(Box::new(Day3Executable {})),
+            "day4" => Some(Box::new(Day4Executable {})),
             _ => None,
         },
     };
