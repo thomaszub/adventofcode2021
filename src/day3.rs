@@ -22,9 +22,8 @@ impl Day3Executable {
         let gamma_rate = bits_to_int(&most_common_bits);
         let epsilon_rate = bits_to_int(&least_common_bits);
         let oxygen_rating = calc_bit_criteria(&bits, calc_most_common_bits);
-        let co2_rating = calc_bit_criteria(&bits, |bits| {
-            invert_bits(&calc_most_common_bits(&bits))
-        });
+        let co2_rating =
+            calc_bit_criteria(&bits, |bits| invert_bits(&calc_most_common_bits(&bits)));
 
         println!("Gamma rate: {}", gamma_rate);
         println!("Epsilon rate: {}", epsilon_rate);
