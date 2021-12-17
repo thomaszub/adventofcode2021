@@ -1,20 +1,20 @@
 mod base;
 mod day1;
+mod day17;
 mod day2;
 mod day3;
 mod day4;
 mod day5;
 mod day6;
-mod day17;
 
 use crate::base::DayExecutable;
 use crate::day1::Day1Executable;
+use crate::day17::Day17Executable;
 use crate::day2::Day2Executable;
 use crate::day3::Day3Executable;
 use crate::day4::Day4Executable;
 use crate::day5::Day5Executable;
 use crate::day6::Day6Executable;
-use crate::day17::Day17Executable;
 use std::env;
 use std::time::Instant;
 
