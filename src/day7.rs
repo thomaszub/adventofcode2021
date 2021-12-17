@@ -30,7 +30,14 @@ impl Day7Executable {
 }
 
 fn calc_fuel(positions: &Vec<i32>, ref_pos: i32) -> i32 {
-    positions.iter().fold(0, |agg, v| agg + (v - ref_pos).abs())
+    positions
+        .iter()
+        .fold(0, |agg, v| agg + fuel_cost(v, ref_pos))
+}
+
+fn fuel_cost(pos: &i32, ref_pos: i32) -> i32 {
+    let n = (pos - ref_pos).abs();
+    n * (n + 1) / 2
 }
 
 fn get_positions(line: &String) -> Vec<i32> {
