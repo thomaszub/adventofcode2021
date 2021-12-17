@@ -15,6 +15,24 @@ impl DayExecutable for Day7Executable {
 
 impl Day7Executable {
     fn process(&self, lines: Vec<String>) {
-
+        let positions = get_positions(lines.get(0).unwrap());
+        let pos_min = positions.iter().min().unwrap().clone();
+        let pos_max = positions.iter().max().unwrap().clone();
+        let mut opt_fuel = calc_fuel(&positions, pos_max);
+        for pos in pos_min..pos_max {
+            let fuel = calc_fuel(&positions, pos);
+            if fuel < opt_fuel {
+                opt_fuel = fuel
+            }
+        }
+        println!("Optimal fuel: {}", opt_fuel);
     }
+}
+
+fn calc_fuel(positions: &Vec<i32>, ref_pos: i32) -> i32 {
+    positions.iter().fold(0, |agg, v| agg + (v - ref_pos).abs())
+}
+
+fn get_positions(line: &String) -> Vec<i32> {
+    line.split(",").map(|s| s.parse::<i32>().unwrap()).collect()
 }
